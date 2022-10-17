@@ -1,0 +1,18 @@
+from django.db import models
+
+# Create your models here.
+class Artist(models.Model):
+    stage_name=models.CharField(
+        max_length=100,
+        unique=True,
+        blank=False,
+        null=False,
+    )
+    social_link=models.URLField(
+        null=False,
+        blank=False
+    )
+    def _str_(self):
+        return self.stage_name
+    class Meta:
+        ordering=['stage_name']

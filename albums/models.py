@@ -32,5 +32,5 @@ class Album(TimeStampedModel):
         default=False,
     )
 
-    def _str_(self):
+    def __str__(self):
         return self.name

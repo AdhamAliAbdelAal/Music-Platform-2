@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'artists/main.css' %}">
+    {% if title %}
+    <title>Music Platform - {{title}}</title>
+    {% else %}
+    <title>Music Platform</title>
+    {% endif %}
+</head>
+<body>
+    <h2>{{title}}</h2>
+    <ul>
+        {% for artist,albums in data %}
+        <li>
+            <ul>
+                <li>id: {{artist.id}}</li>
+                <li>Stage Name:{{artist.stage_name}}</li>
+                <li>Social Link:{{artist.social_link}}</li>
+                <li>
+                    albums:
+                    {% for album in albums %}
+                    <ul>
+                        <br>
+                        <li>id:{{album.id}}</li>
+                        <li>Name:{{album.name}}</li>
+                        <li>Cost:{{album.cost}}</li>
+                        <li>Release time:{{album.release_time}}</li>
+                        <li>Creation time:{{album.creation_time}}</li>
+                    </ul>
+                    {%endfor%}
+                </li>
+            </ul>
+        </li>
+        <hr>
+        {%endfor%}
+    </ul>
+</body>
+</html>

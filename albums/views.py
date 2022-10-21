@@ -6,12 +6,12 @@ def form(request):
         my_form=AlbumForm(request.POST)
         if(my_form.is_valid()):
             my_form.save()
-            return redirect('artist-form')
+            return redirect('artists')
     else:
         my_form=AlbumForm
     print(my_form)
     context={
         'form':my_form,
-        'title':'Album',
+        'title':'Album Form',
     }
     return render(request,'albums/form.html',context)

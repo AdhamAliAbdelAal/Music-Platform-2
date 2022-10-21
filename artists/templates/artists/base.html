@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'artists/main.css' %}">
+    {% if title %}
+    <title>Music Platform - {{title}}</title>
+    {% else %}
+    <title>Music Platform</title>
+    {% endif %}
+</head>
+<body>
+    <h2>{{title}} Form</h2>
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        {% block content %}
+        {% endblock content %}
+        <input type="submit">
+    </form>
+</body>
+</html>

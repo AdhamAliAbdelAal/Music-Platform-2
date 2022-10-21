@@ -1,9 +1,17 @@
 from django.db import models
 from artists.models import Artist
+from model_utils.fields import AutoCreatedField
 # Create your models here.
 
 
-class Album(models.Model):
+class TimeStampedModel(models.Model):
+    creation_time =AutoCreatedField()
+
+    class Meta:
+        abstract = True
+
+
+class Album(TimeStampedModel):
     artist = models.ForeignKey(
         Artist,
         on_delete=models.CASCADE,
@@ -11,9 +19,6 @@ class Album(models.Model):
     name = models.CharField(
         max_length=100,
         default="New Album",
-    )
-    creation_time = models.DateTimeField(
-        auto_now_add=True,
     )
     release_time = models.DateTimeField(
         null=False,
@@ -23,7 +28,6 @@ class Album(models.Model):
         decimal_places=10,
         max_digits=20
     )
-
     is_approved = models.BooleanField(
         default=False,
     )

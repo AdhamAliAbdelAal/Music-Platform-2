@@ -12,7 +12,7 @@ class Artist(models.Model):
         null=False,
         blank=False
     )
-    def _str_(self):
+    def __str__(self):
         return self.stage_name
     class Meta:
         ordering=['stage_name']
